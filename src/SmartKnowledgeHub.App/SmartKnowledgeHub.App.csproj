@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationTitle>Smart Personal Knowledge Hub</ApplicationTitle>
+    <RootNamespace>SmartKnowledgeHub.App</RootNamespace>
+    <AssemblyName>SmartKnowledgeHub</AssemblyName>
+    <Authors>Hossein Tabasi</Authors>
+    <Company>Shoolini University</Company>
+    <Product>Smart Personal Knowledge Hub</Product>
+    <Copyright>Copyright (c) 2026 Hossein Tabasi</Copyright>
+    <Description>Windows desktop hub for notes, tasks, files and local search.</Description>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartKnowledgeHub.Core\SmartKnowledgeHub.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\sample-notes\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\models\README.md" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Assets\models\minilm.onnx" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Assets\models\minilm.onnx')" />
+  </ItemGroup>
+
+</Project>

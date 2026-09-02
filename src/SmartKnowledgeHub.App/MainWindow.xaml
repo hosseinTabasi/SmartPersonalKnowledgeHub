@@ -1,0 +1,51 @@
+<Window x:Class="SmartKnowledgeHub.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Smart Personal Knowledge Hub"
+        Height="760" Width="1180"
+        MinHeight="600" MinWidth="960"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="248"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Style="{StaticResource NavPane}">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Top">
+                    <TextBlock Text="Knowledge Hub" FontSize="20" FontWeight="SemiBold"/>
+                    <TextBlock Text="Offline notes · tasks · files" Style="{StaticResource CaptionText}" Margin="0,2,0,16"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,16,0,0">
+                    <TextBlock Text="Hossein Tabasi" FontWeight="SemiBold"/>
+                    <TextBlock Text="M.Tech CSE · Shoolini University" Style="{StaticResource CaptionText}" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel>
+                    <RadioButton Content="Dashboard" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsDashboard, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Dashboard"/>
+                    <RadioButton Content="Notes" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsNotes, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Notes"/>
+                    <RadioButton Content="Tasks" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsTasks, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Tasks"/>
+                    <RadioButton Content="Files" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsFiles, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Files"/>
+                    <RadioButton Content="Search" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsSearch, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Search"/>
+                    <RadioButton Content="Settings" GroupName="MainNav" Style="{StaticResource NavRadio}"
+                                 IsChecked="{Binding IsSettings, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <ContentControl Grid.Column="1"
+                        Content="{Binding CurrentViewModel}"
+                        Margin="20"/>
+    </Grid>
+</Window>
